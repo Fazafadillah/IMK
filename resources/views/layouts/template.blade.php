@@ -598,10 +598,8 @@
             <div class="d-flex align-items-center gap-1">
                 <a href="{{ route('dashboard') }}"
                     class="nav-link-pixel {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
-                <a href="{{ route('profile') }}"
-                    class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
-                <a href="{{ route('staff.index') }}"
-                    class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
+                <a href="" class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
+                <a href="" class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
 
                 {{-- User dropdown --}}
                 <div class="user-trigger ms-2" id="userTrigger">
@@ -621,7 +619,7 @@
                         <div class="popup-row" style="color:#16a34a;">STATUS : &nbsp;ONLINE</div>
                         <hr class="popup-divider">
 
-                        <a href="{{ route('profile') }}" class="popup-btn">
+                        <a href="" class="popup-btn">
                             <i class="bi bi-gear-fill"></i> SETTING
                         </a>
 

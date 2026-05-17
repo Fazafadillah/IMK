@@ -19,7 +19,7 @@ class DashboardController extends Controller
     ];
     public function index()
     {
-        $user = User::first();
+        // $user = User::first();
 
         // Semua karyawan (untuk keperluan lain)
         $karyawans = Karyawan::with('available')->get();
@@ -43,7 +43,7 @@ class DashboardController extends Controller
             ['nama' => 'Pria Oslo',     'rating' => 4, 'komentar' => '"Sometimes I see this is not me"'],
         ];
 
-        return view('dashboard', compact('karyawans', 'barbers', 'stats', 'feedbacks', 'user'));
+        return view('dashboard', compact('karyawans', 'barbers', 'stats', 'feedbacks'));
     }
 
     /**

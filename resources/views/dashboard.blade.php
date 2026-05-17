@@ -6,7 +6,7 @@
         <div class="bg-white p-4 rounded-4 shadow-sm mb-4">
             <div class="row g-3">
                 <h2 style="font-weight:700; font-size:1.75rem; color:#1b4332; margin-bottom:1.3rem;">
-                    Halo, Selamat Datang! {{ $user->name }}
+                     Halo, Selamat Datang! {{ Auth::user()->name }}
                 </h2>
 
                 {{-- <div class="row g-3 mb-4"> --}}
