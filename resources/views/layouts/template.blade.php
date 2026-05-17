@@ -599,7 +599,8 @@
                 <a href="{{ route('dashboard') }}"
                     class="nav-link-pixel {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
                 <a href="" class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
-                <a href="" class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
+                <a href="{{ route('staff.index') }}"
+                    class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
 
                 {{-- User dropdown --}}
                 <div class="user-trigger ms-2" id="userTrigger">
