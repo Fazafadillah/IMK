@@ -86,7 +86,10 @@
                                 <option value="Senior Barber">Senior Barber</option>
                                 <option value="Junior Barber">Junior Barber</option>
                                 <option value="Barber Trainee">Barber Trainee</option>
-                                <option value="OB">OB</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Cleaning Staff">Cleaning Staff</option>
+                                <option value="Cashier">Cashier</option>
+                                <option value="Owner">Owner</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -103,7 +106,7 @@
         </div>
     </div>
 
-    {{-- ─── MODAL EDIT & HAPUS (per karyawan) ──────────────────────────────── --}}
+    {{--  MODAL EDIT & HAPUS (per karyawan) --}}
     @foreach ($karyawans as $k)
         {{-- Modal Edit --}}
         <div class="modal fade" id="modalEdit{{ $k->id }}" tabindex="-1">

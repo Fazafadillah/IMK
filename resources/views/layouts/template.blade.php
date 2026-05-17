@@ -7,17 +7,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Pixel Barbershop</title>
 
-    {{-- Google Fonts: Jersey 15 (untuk PIXEL) + Inter (body) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    {{-- Bootstrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    {{-- Bootstrap Icons --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <style>
         :root {
             --green-dark: #1b4332;
@@ -46,7 +41,7 @@
             flex-direction: column;
         }
 
-        /*  NAVBAR  */
+        /*  NAVBAR ─ */
         .navbar-pixel {
             background-color: var(--green-dark);
             padding: 0.55rem 1.8rem;
@@ -56,7 +51,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
 
-        /* Brand: "PIXEL" pakai Jersey 15 */
         .brand-pixel {
             font-family: 'Jersey 15', cursive;
             font-size: 1.7rem;
@@ -67,7 +61,6 @@
         }
 
         .brand-sub {
-            /* font-family: 'Inter', sans-serif; */
             font-family: 'Jersey 15', cursive;
             font-size: 0.65rem;
             font-weight: 400;
@@ -97,7 +90,14 @@
             font-weight: 600;
         }
 
-        /* User trigger */
+        .logo-pixel {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /*  USER TRIGGER ─ */
         .user-trigger {
             cursor: pointer;
             display: flex;
@@ -128,7 +128,7 @@
             object-fit: cover;
         }
 
-        /* User popup */
+        /*  USER POPUP ─ */
         .user-popup {
             display: none;
             position: absolute;
@@ -156,8 +156,9 @@
 
         .popup-divider {
             border: none;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid ;
             margin: 0.75rem 0;
+            color: #204E37;
         }
 
         .popup-btn {
@@ -194,13 +195,12 @@
             background: #fff0f0;
         }
 
-        /*  MAIN  */
+        /*  MAIN & FOOTER  */
         main {
             flex: 1;
             padding: 1.8rem 1.5rem;
         }
 
-        /*  FOOTER  */
         footer.site-footer {
             background-color: var(--cream);
             text-align: center;
@@ -210,7 +210,7 @@
             border-top: 1px solid #ddd;
         }
 
-        /*  CARD  */
+        /*  CARDS  */
         .card-pixel {
             background: var(--cream);
             border-radius: 18px;
@@ -218,7 +218,6 @@
             box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
         }
 
-        /*  STAT CARD ─ */
         .stat-card {
             background-color: var(--green-mid);
             color: var(--white);
@@ -258,7 +257,7 @@
             text-align: center;
         }
 
-        /*  STATUS BADGE  */
+        /*  STATUS BADGE ─ */
         .status-badge {
             display: inline-block;
             font-size: 0.72rem;
@@ -282,7 +281,7 @@
             background-color: #4b4b4b;
         }
 
-        /*  STATUS DROPDOWN ─ */
+        /*  STATUS DROPDOWN  */
         .status-dropdown-wrap {
             position: relative;
         }
@@ -363,7 +362,7 @@
             background-color: #4b4b4b;
         }
 
-        /*  FEEDBACK  */
+        /*  FEEDBACK ─ */
         .feedback-item {
             padding: 0.65rem 0;
             border-bottom: 1px solid #e5e7eb;
@@ -389,7 +388,7 @@
             font-size: 0.8rem;
         }
 
-        /*  TABLE ─ */
+        /*  TABLE  */
         .table-pixel thead {
             background-color: var(--green-mid);
             color: var(--white);
@@ -404,7 +403,7 @@
             background-color: var(--green-pale);
         }
 
-        /*  BUTTONS ─ */
+        /*  BUTTONS  */
         .btn-pixel-primary {
             background-color: var(--green-dark);
             color: var(--white);
@@ -441,7 +440,7 @@
             color: white;
         }
 
-        /*  FLASH ─ */
+        /*  FLASH MESSAGES ─ */
         .alert-pixel-success {
             background-color: var(--green-pale);
             border-left: 4px solid var(--green-mid);
@@ -458,7 +457,7 @@
             font-size: 0.85rem;
         }
 
-        /*  LOGOUT MODAL OVERLAY  */
+        /*  LOGOUT OVERLAY ─ */
         .logout-overlay {
             display: none;
             position: fixed;
@@ -536,32 +535,31 @@
             background: #fff0f0;
         }
 
-        .logo-pixel {
-            width: 42px;
-            height: 42px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .password-wrap {
+        /*  PASSWORD SHOW/HIDE  */
+        .pw-wrap {
             position: relative;
         }
 
-        .password-toggle {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #777;
-            font-size: 0.95rem;
+        .pw-wrap .form-control {
+            padding-right: 2.6rem;
         }
 
-        .password-input {
-            border-radius: 10px !important;
-            padding-right: 42px;
-            font-size: 0.88rem;
-            letter-spacing: 1px;
+        .pw-toggle {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af;
+            font-size: 1rem;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .pw-toggle:hover {
+            color: #4b5563;
         }
     </style>
 
@@ -570,23 +568,12 @@
 
 <body>
 
-    {{-- NAVBAR --}}
+    {{-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ --}}
     @auth
         <nav class="navbar-pixel d-flex align-items-center justify-content-between">
 
             {{-- Brand --}}
             <a href="{{ route('dashboard') }}" class="d-flex align-items-center gap-2 text-decoration-none">
-                {{-- Barber pole SVG --}}
-                {{-- <svg width="28" height="42" viewBox="0 0 32 52" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    style="flex-shrink:0;">
-                    <rect x="13" y="0" width="6" height="52" rx="3" fill="#e5e5e5" />
-                    <path d="M13 2 Q16 6 19 10 Q16 14 13 18 Q16 22 19 26 Q16 30 13 34 Q16 38 19 42 Q16 46 13 50"
-                        stroke="#e63946" stroke-width="2.5" fill="none" />
-                    <path d="M19 2 Q16 6 13 10 Q16 14 19 18 Q16 22 13 26 Q16 30 19 34 Q16 38 13 42 Q16 46 19 50"
-                        stroke="#1d3557" stroke-width="2.5" fill="none" />
-                    <ellipse cx="16" cy="2" rx="5" ry="2.5" fill="#f1faee" />
-                    <ellipse cx="16" cy="50" rx="5" ry="2.5" fill="#f1faee" />
-                </svg> --}}
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo-pixel">
                 <div>
                     <div class="brand-pixel">PIXEL</div>
@@ -598,7 +585,8 @@
             <div class="d-flex align-items-center gap-1">
                 <a href="{{ route('dashboard') }}"
                     class="nav-link-pixel {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
-                <a href="" class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
+                <a href="{{ route('profile') }}"
+                    class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
                 <a href="{{ route('staff.index') }}"
                     class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
 
@@ -617,10 +605,19 @@
                     {{-- Popup --}}
                     <div class="user-popup" id="userPopup">
                         <div class="popup-row">NAME &nbsp;&nbsp;: &nbsp;{{ strtoupper(Auth::user()->name) }}</div>
-                        <div class="popup-row" style="color:#16a34a;">STATUS : &nbsp;ONLINE</div>
+
+                        {{-- Status online/offline — diisi JS, bukan hardcode --}}
+                        <div class="popup-row d-flex align-items-center gap-1">
+                            STATUS :&nbsp;
+                            <span id="onlineStatus" style="font-weight:700;">–</span>
+                            <span id="onlineDot"
+                                style="display:inline-block;width:8px;height:8px;border-radius:50%;
+                                 flex-shrink:0;transition:background .3s;"></span>
+                        </div>
+
                         <hr class="popup-divider">
 
-                        <a href="" class="popup-btn">
+                        <a href="{{ route('profile') }}" class="popup-btn">
                             <i class="bi bi-gear-fill"></i> SETTING
                         </a>
 
@@ -648,7 +645,7 @@
         </div>
     @endauth
 
-    {{-- MAIN CONTENT --}}
+    {{-- MAIN CONTENT  --}}
     <main>
         @if (session('success'))
             <div class="alert-pixel-success p-3 mb-3 d-flex align-items-center gap-2">
@@ -678,7 +675,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        //  User popup 
+        //  User popup toggle 
         const userTrigger = document.getElementById('userTrigger');
         const userPopup = document.getElementById('userPopup');
 
@@ -691,7 +688,7 @@
             userPopup.addEventListener('click', e => e.stopPropagation());
         }
 
-        // Logout modal
+        //  Logout modal 
         const logoutTrigger = document.getElementById('logoutTrigger');
         const logoutOverlay = document.getElementById('logoutOverlay');
         const logoutCancel = document.getElementById('logoutCancel');
@@ -709,11 +706,63 @@
         if (logoutCancel) logoutCancel.addEventListener('click', () => logoutOverlay.classList.remove('show'));
         if (logoutConfirm) logoutConfirm.addEventListener('click', () => logoutForm.submit());
 
-        // Klik luar kotak → tutup
         if (logoutOverlay) {
             logoutOverlay.addEventListener('click', function(e) {
                 if (e.target === this) this.classList.remove('show');
             });
+        }
+
+        //  Status online/offline realtime (ping ke server eksternal) 
+        function setOnlineUI(isOnline) {
+            const statusEl = document.getElementById('onlineStatus');
+            const dotEl = document.getElementById('onlineDot');
+            if (!statusEl || !dotEl) return;
+
+            if (isOnline) {
+                statusEl.textContent = 'ONLINE';
+                statusEl.style.color = '#16a34a';
+                dotEl.style.background = '#16a34a';
+                dotEl.style.boxShadow = '0 0 0 2px rgba(22,163,74,0.3)';
+            } else {
+                statusEl.textContent = 'OFFLINE';
+                statusEl.style.color = '#dc3545';
+                dotEl.style.background = '#dc3545';
+                dotEl.style.boxShadow = '0 0 0 2px rgba(220,53,69,0.3)';
+            }
+        }
+
+        // Fetch ke URL eksternal dengan cache-bust — kalau gagal = tidak ada internet
+        // Menggunakan favicon Google (1x1px, sangat kecil, tidak butuh banyak bandwidth)
+        function checkRealInternet() {
+            fetch('https://www.google.com/favicon.ico?_=' + Date.now(), {
+                    mode: 'no-cors', // hindari CORS error
+                    cache: 'no-store', // selalu request baru, jangan pakai cache
+                })
+                .then(() => setOnlineUI(true))
+                .catch(() => setOnlineUI(false));
+        }
+
+        // Cek pertama kali saat halaman load
+        checkRealInternet();
+
+        // Cek ulang setiap 10 detik
+        setInterval(checkRealInternet, 10000);
+
+        // Tetap pakai event browser sebagai trigger tambahan (respons instan)
+        window.addEventListener('online', checkRealInternet);
+        window.addEventListener('offline', () => setOnlineUI(false));
+
+        //  Show/hide password (dipakai di semua halaman) ─
+        function togglePw(id, btn) {
+            const input = document.getElementById(id);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'bi bi-eye';
+            } else {
+                input.type = 'password';
+                icon.className = 'bi bi-eye-slash';
+            }
         }
     </script>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',       [AuthController::class, 'showLogin'])->name('login');
@@ -18,4 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/staff/{karyawan}/delete',     [KaryawanController::class, 'destroy'])->name('staff.destroy');
     Route::post('/karyawan/{karyawan}/update-status', [DashboardController::class, 'updateStatus'])
         ->name('karyawan.update-status');
+    Route::get('/profile',          [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/update',  [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 });
