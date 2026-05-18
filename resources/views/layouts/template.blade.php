@@ -1,5 +1,17 @@
+@php
+    $__temaMap = [
+        'green' => ['primary' => '#1b4332', 'mid' => '#2d6a4f', 'bg' => '#a8d5a2', 'pale' => '#d8f3dc'],
+        'blue' => ['primary' => '#1e3a5f', 'mid' => '#2563eb', 'bg' => '#bfdbfe', 'pale' => '#dbeafe'],
+        'maroon' => ['primary' => '#4a0e0e', 'mid' => '#991b1b', 'bg' => '#fecaca', 'pale' => '#fee2e2'],
+        'purple' => ['primary' => '#3b0764', 'mid' => '#7c3aed', 'bg' => '#ddd6fe', 'pale' => '#ede9fe'],
+        'slate' => ['primary' => '#1e293b', 'mid' => '#475569', 'bg' => '#cbd5e1', 'pale' => '#e2e8f0'],
+    ];
+    $__temaKey = Auth::check() ? (\App\Models\Setting::get('tema_warna', 'green') ?: 'green') : 'green';
+    $__c = $__temaMap[$__temaKey] ?? $__temaMap['green'];
+    $__bahasa = Auth::check() ? (\App\Models\Setting::get('bahasa', 'id') ?: 'id') : 'id';
+@endphp
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ $__bahasa }}">
 
 <head>
     <meta charset="UTF-8">
@@ -15,11 +27,11 @@
 
     <style>
         :root {
-            --green-dark: #1b4332;
-            --green-mid: #2d6a4f;
-            --green-light: #8fbc8f;
-            --green-bg: #a8d5a2;
-            --green-pale: #d8f3dc;
+            --green-dark: {{ $__c['primary'] }};
+            --green-mid: {{ $__c['mid'] }};
+            --green-light: {{ $__c['mid'] }};
+            --green-bg: {{ $__c['bg'] }};
+            --green-pale: {{ $__c['pale'] }};
             --cream: #f0f0e8;
             --white: #ffffff;
             --text-dark: #1a1a1a;
@@ -41,7 +53,7 @@
             flex-direction: column;
         }
 
-        /*  NAVBAR ─ */
+        /* ── NAVBAR ───────────────────────────────── */
         .navbar-pixel {
             background-color: var(--green-dark);
             padding: 0.55rem 1.8rem;
@@ -97,7 +109,7 @@
             flex-shrink: 0;
         }
 
-        /*  USER TRIGGER ─ */
+        /* ── USER TRIGGER ─────────────────────────── */
         .user-trigger {
             cursor: pointer;
             display: flex;
@@ -128,7 +140,7 @@
             object-fit: cover;
         }
 
-        /*  USER POPUP ─ */
+        /* ── USER POPUP ───────────────────────────── */
         .user-popup {
             display: none;
             position: absolute;
@@ -156,9 +168,8 @@
 
         .popup-divider {
             border: none;
-            border-top: 1px solid ;
+            border-top: 1px solid #e5e7eb;
             margin: 0.75rem 0;
-            color: #204E37;
         }
 
         .popup-btn {
@@ -195,7 +206,7 @@
             background: #fff0f0;
         }
 
-        /*  MAIN & FOOTER  */
+        /* ── MAIN & FOOTER ────────────────────────── */
         main {
             flex: 1;
             padding: 1.8rem 1.5rem;
@@ -210,7 +221,7 @@
             border-top: 1px solid #ddd;
         }
 
-        /*  CARDS  */
+        /* ── CARDS ────────────────────────────────── */
         .card-pixel {
             background: var(--cream);
             border-radius: 18px;
@@ -257,7 +268,7 @@
             text-align: center;
         }
 
-        /*  STATUS BADGE ─ */
+        /* ── STATUS BADGE ─────────────────────────── */
         .status-badge {
             display: inline-block;
             font-size: 0.72rem;
@@ -281,7 +292,7 @@
             background-color: #4b4b4b;
         }
 
-        /*  STATUS DROPDOWN  */
+        /* ── STATUS DROPDOWN ──────────────────────── */
         .status-dropdown-wrap {
             position: relative;
         }
@@ -362,7 +373,7 @@
             background-color: #4b4b4b;
         }
 
-        /*  FEEDBACK ─ */
+        /* ── FEEDBACK ─────────────────────────────── */
         .feedback-item {
             padding: 0.65rem 0;
             border-bottom: 1px solid #e5e7eb;
@@ -388,7 +399,7 @@
             font-size: 0.8rem;
         }
 
-        /*  TABLE  */
+        /* ── TABLE ────────────────────────────────── */
         .table-pixel thead {
             background-color: var(--green-mid);
             color: var(--white);
@@ -403,7 +414,7 @@
             background-color: var(--green-pale);
         }
 
-        /*  BUTTONS  */
+        /* ── BUTTONS ──────────────────────────────── */
         .btn-pixel-primary {
             background-color: var(--green-dark);
             color: var(--white);
@@ -440,7 +451,7 @@
             color: white;
         }
 
-        /*  FLASH MESSAGES ─ */
+        /* ── FLASH MESSAGES ───────────────────────── */
         .alert-pixel-success {
             background-color: var(--green-pale);
             border-left: 4px solid var(--green-mid);
@@ -457,7 +468,7 @@
             font-size: 0.85rem;
         }
 
-        /*  LOGOUT OVERLAY ─ */
+        /* ── LOGOUT OVERLAY ───────────────────────── */
         .logout-overlay {
             display: none;
             position: fixed;
@@ -535,7 +546,7 @@
             background: #fff0f0;
         }
 
-        /*  PASSWORD SHOW/HIDE  */
+        /* ── PASSWORD SHOW/HIDE ────────────────────── */
         .pw-wrap {
             position: relative;
         }
@@ -589,6 +600,8 @@
                     class="nav-link-pixel {{ request()->routeIs('profile') ? 'active' : '' }}">Profile</a>
                 <a href="{{ route('staff.index') }}"
                     class="nav-link-pixel {{ request()->routeIs('staff.*') ? 'active' : '' }}">Staff</a>
+                {{-- <a href="{{ route('settings.index') }}"
+                    class="nav-link-pixel {{ request()->routeIs('settings.*') ? 'active' : '' }}">Settings</a> --}}
 
                 {{-- User dropdown --}}
                 <div class="user-trigger ms-2" id="userTrigger">
@@ -617,9 +630,11 @@
 
                         <hr class="popup-divider">
 
-                        <a href="{{ route('profile') }}" class="popup-btn">
+                        <a href="{{ route('settings.index') }}" class="popup-btn">
                             <i class="bi bi-gear-fill"></i> SETTING
                         </a>
+                        {{-- <a href="{{ route('settings.index') }}"
+                            class="nav-link-pixel {{ request()->routeIs('settings.*') ? 'active' : '' }}">Settings</a> --}}
 
                         <button type="button" class="popup-btn danger" id="logoutTrigger">
                             <i class="bi bi-box-arrow-right"></i> LOG OUT
@@ -645,7 +660,7 @@
         </div>
     @endauth
 
-    {{-- MAIN CONTENT  --}}
+    {{-- ═══ MAIN CONTENT ══════════════════════════════════════════════════════ --}}
     <main>
         @if (session('success'))
             <div class="alert-pixel-success p-3 mb-3 d-flex align-items-center gap-2">
@@ -675,7 +690,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        //  User popup toggle 
+        // ── User popup toggle ─────────────────────────────────────────────────────
         const userTrigger = document.getElementById('userTrigger');
         const userPopup = document.getElementById('userPopup');
 
@@ -688,7 +703,7 @@
             userPopup.addEventListener('click', e => e.stopPropagation());
         }
 
-        //  Logout modal 
+        // ── Logout modal ──────────────────────────────────────────────────────────
         const logoutTrigger = document.getElementById('logoutTrigger');
         const logoutOverlay = document.getElementById('logoutOverlay');
         const logoutCancel = document.getElementById('logoutCancel');
@@ -712,7 +727,7 @@
             });
         }
 
-        //  Status online/offline realtime (ping ke server eksternal) 
+        // ── Status online/offline realtime (ping ke server eksternal) ────────────
         function setOnlineUI(isOnline) {
             const statusEl = document.getElementById('onlineStatus');
             const dotEl = document.getElementById('onlineDot');
@@ -752,7 +767,7 @@
         window.addEventListener('online', checkRealInternet);
         window.addEventListener('offline', () => setOnlineUI(false));
 
-        //  Show/hide password (dipakai di semua halaman) ─
+        // ── Show/hide password (dipakai di semua halaman) ─────────────────────────
         function togglePw(id, btn) {
             const input = document.getElementById(id);
             const icon = btn.querySelector('i');
